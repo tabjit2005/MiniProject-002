@@ -126,12 +126,12 @@ section[data-testid="stSidebar"] {
 }
 
 /* เปลี่ยนข้อความเมนู sidebar เป็นภาษาไทย */
-[data-testid="stSidebarNav"] li:nth-child(1) a * { font-size: 0 !important; }
-[data-testid="stSidebarNav"] li:nth-child(1) a::after { content: "💎 หน้าหลัก"; font-size: 1rem !important; }
-[data-testid="stSidebarNav"] li:nth-child(2) a * { font-size: 0 !important; }
-[data-testid="stSidebarNav"] li:nth-child(2) a::after { content: "📊 รายละเอียดโปรเจกต์"; font-size: 1rem !important; }
-[data-testid="stSidebarNav"] li:nth-child(3) a * { font-size: 0 !important; }
-[data-testid="stSidebarNav"] li:nth-child(3) a::after { content: "🧑‍💻 ผู้พัฒนา"; font-size: 1rem !important; }
+[data-testid="stSidebarNav"] li:nth-child(1) a * { display: none !important; }
+[data-testid="stSidebarNav"] li:nth-child(1) a::after { content: "💎 หน้าหลัก"; display: inline-block; font-size: 1rem !important; }
+[data-testid="stSidebarNav"] li:nth-child(2) a * { display: none !important; }
+[data-testid="stSidebarNav"] li:nth-child(2) a::after { content: "📊 รายละเอียดโปรเจกต์"; display: inline-block; font-size: 1rem !important; }
+[data-testid="stSidebarNav"] li:nth-child(3) a * { display: none !important; }
+[data-testid="stSidebarNav"] li:nth-child(3) a::after { content: "🧑‍💻 ผู้พัฒนา"; display: inline-block; font-size: 1rem !important; }
 </style>
 """
 
