@@ -48,22 +48,6 @@ _PAGE_CSS = """
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .stat .cap { color: #9FB4CE; font-size: 0.85rem; letter-spacing: 0.03em; }
-
-.script {
-    background: linear-gradient(145deg, rgba(15,37,66,0.85) 0%, rgba(11,58,82,0.55) 100%);
-    border: 1px solid rgba(212,175,55,0.3);
-    border-radius: 14px;
-    padding: 1.2rem 1.4rem;
-}
-.script .tag {
-    color: #D4AF37; font-size: 0.76rem; font-weight: 700;
-    letter-spacing: 0.16em; text-transform: uppercase;
-}
-.script p {
-    color: #DCE7F5; font-size: 1.02rem; line-height: 1.95;
-    margin: 0.5rem 0 0 0;
-}
-.script .cue { color: #7DD3FC; font-weight: 600; }
 </style>
 """
 st.markdown(_PAGE_CSS, unsafe_allow_html=True)
@@ -79,11 +63,6 @@ def step(no, head, body):
     st.markdown(f'<div class="step"><div class="no">{no}</div>'
                 f'<div class="head">{head}</div><div class="body">{body}</div></div>',
                 unsafe_allow_html=True)
-
-
-def script(text):
-    st.markdown(f'<div class="script"><div class="tag">✦ สคริปต์พูด</div>'
-                f'<p>{text}</p></div>', unsafe_allow_html=True)
 
 
 def figure(name, caption):
@@ -131,18 +110,6 @@ with tab1:
         step("04", "ตรวจสอบผลลัพธ์ได้",
              "หลัก 4C ของวงการเพชรบอกว่าน้ำหนักควรสำคัญที่สุด ใช้เช็คได้ว่าโมเดลเรียนถูกทาง")
 
-    script(
-        'โปรเจกต์นี้เป็นปัญหา <span class="cue">Regression</span> ครับ '
-        'คือทำนายราคาเพชรซึ่งเป็นตัวเลขต่อเนื่อง จากคุณลักษณะทางกายภาพ 9 ตัว '
-        'ข้อมูลมีทั้งหมดห้าหมื่นสามพันกว่าแถว '
-        'เหตุผลที่เลือกชุดนี้มี 2 ข้อหลักครับ — '
-        'ข้อแรก มันมีทั้งตัวแปรตัวเลขและตัวแปรหมวดหมู่ที่มีลำดับชัดเจน '
-        'ทำให้ได้ฝึกตัดสินใจเรื่อง encoding จริง ๆ '
-        'ข้อสอง <span class="cue">ข้อมูลชุดนี้ไม่สะอาด</span> '
-        'มีเพชรที่ความกว้างเป็นศูนย์ มีเพชรที่กว้างเกือบ 6 เซนติเมตร และมีแถวซ้ำ '
-        'ซึ่งบังคับให้เราต้องทำ preprocessing อย่างจริงจัง ไม่ใช่โหลดมาแล้วเทรนได้เลยครับ'
-    )
-
 # ══════════════ 2 ══════════════
 with tab2:
     st.subheader("5 ขั้นตอน")
@@ -174,17 +141,6 @@ with tab2:
             unsafe_allow_html=True)
 
     figure("fig3_preprocessing.png", "ซ้าย–กลาง: ผลของ log1p · ขวา: outlier ที่ตรวจพบ")
-
-    script(
-        'Preprocessing มี 5 ขั้นครับ เริ่มจาก<span class="cue">ทำความสะอาด</span> — '
-        'ลบแถวซ้ำ แล้วแปลงค่ามิติที่เป็นศูนย์ให้เป็น NaN '
-        'จุดนี้ผมเลือก<span class="cue">ไม่ลบแถวทิ้ง</span> เพราะโมเดลที่ใช้จัดการค่า missing ได้เอง '
-        'ขั้นต่อมาคือ encoding ผมใช้ <span class="cue">Ordinal ไม่ใช่ One-hot</span> '
-        'เพราะคุณภาพเพชรมีลำดับจริง และช่วยลดจาก 20 คอลัมน์เหลือแค่ 3 '
-        'จากนั้นเพิ่ม feature ปริมาตรกับความสมมาตร '
-        'แล้วก็แปลง target ด้วย log เพราะราคาเพชรเบ้ขวามาก ตามที่เห็นในกราฟนี้ครับ '
-        'ความเบ้ลดจาก 1.62 เหลือ 0.12 สุดท้ายแบ่งข้อมูล 80 ต่อ 20'
-    )
 
 # ══════════════ 3 ══════════════
 with tab3:
@@ -219,16 +175,6 @@ with tab3:
 
     figure("fig4_learning_importance.png",
            "ซ้าย: Learning curve และจุด early stopping · ขวา: ความสำคัญของแต่ละ feature")
-
-    script(
-        'โมเดลที่ใช้คือ <span class="cue">Histogram-based Gradient Boosting</span> ครับ '
-        'หลักการคือสร้างต้นไม้ต่อกันเป็นทอด ๆ '
-        'ต้นแรกทายหยาบ ๆ ต้นถัดไปเรียนรู้ว่าต้นก่อนหน้าพลาดตรงไหน แล้วแก้ให้ทีละนิด '
-        'ดูจากตารางนี้ครับ เพชรเม็ดนี้ราคาจริง 326 เหรียญ '
-        'โมเดลเริ่มจากค่าเฉลี่ยที่ 2,400 แล้วค่อย ๆ ไต่ลงมาจนหยุดที่ 387 '
-        'ส่วนคำว่า <span class="cue">Histogram</span> หมายถึงมันย่อข้อมูลทุกคอลัมน์เหลือ 255 ถังก่อน '
-        'ทำให้หาจุดตัดได้เร็วมาก — เร็วกว่า RandomForest ถึง 26 เท่าครับ'
-    )
 
 # ══════════════ 4 ══════════════
 with tab4:
