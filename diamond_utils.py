@@ -48,7 +48,8 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
     color: transparent;
 }
 .hero p { color: #B9C7DD; font-size: 1.02rem; margin: 0; }
-.hero h1 a { display: none !important; }
+.hero a[href^="#"],
+.hero [data-testid="stHeaderActionElements"] { display: none !important; }
 
 .diamond-card {
     background: rgba(255,255,255,0.03);
