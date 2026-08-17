@@ -73,4 +73,3 @@ with mid:
     )
 
 st.markdown('<div class="sparkle-divider">✦ ✦ ✦</div>', unsafe_allow_html=True)
-st.caption("Made with Streamlit · Machine Learning Projects")
