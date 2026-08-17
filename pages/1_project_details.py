@@ -212,16 +212,5 @@ with tab4:
     figure("fig1_model_comparison.png", "เปรียบเทียบ 4 มิติ — สังเกตแกนขนาดไฟล์เป็น log scale")
     figure("fig2_residual.png", "ซ้าย: ค่าจริงเทียบค่าทำนาย · กลาง–ขวา: การกระจายของ residual")
 
-    script(
-        'ผมเปรียบเทียบ 3 โมเดลครับ Ridge เป็นตัวตั้งต้น ได้ R² 0.94 '
-        'ส่วน RandomForest กับ HistGradientBoosting ได้ใกล้เคียงกันที่ 0.98 '
-        'แต่<span class="cue">จุดชี้ขาดคือขนาดไฟล์</span>ครับ — '
-        'RandomForest ใหญ่ถึง 492 เมกะไบต์ เกินขีดจำกัดไป 5 เท่า deploy ไม่ได้เลย '
-        'ขณะที่ HistGradientBoosting เหลือแค่ 2.4 เมกะไบต์ แถมแม่นกว่านิดหน่อย '
-        'ผมจึงเลือกตัวนี้ครับ '
-        'ผลสุดท้ายคือ<span class="cue">ทำนายพลาดเฉลี่ย 256 เหรียญ</span> '
-        'และยืนยันด้วย cross-validation ว่าค่าเบี่ยงเบนต่ำมาก ผลเชื่อถือได้ครับ'
-    )
-
 st.markdown('<div class="sparkle-divider">✦ ✦ ✦</div>', unsafe_allow_html=True)
 st.caption("ชุดข้อมูล: diamonds (53,940 แถว) · โมเดล: HistGradientBoostingRegressor · scikit-learn 1.8.0")
