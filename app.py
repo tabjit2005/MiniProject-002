@@ -3,7 +3,7 @@ import streamlit as st
 from diamond_utils import CLARITY_LEVELS, COLOR_LEVELS, CUT_LEVELS, load_model, page_setup, predict_price
 
 page_setup(
-    page_title="Diamond Price Predictor",
+    page_title="Diamond Price Predictor | MiniProject",
     page_icon="💎",
     hero_title="💎 Diamond Price Predictor",
     hero_subtitle=(

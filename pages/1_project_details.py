@@ -3,7 +3,7 @@ import streamlit as st
 from diamond_utils import page_setup
 
 page_setup(
-    page_title="Project Info",
+    page_title="Project Info | MiniProject",
     page_icon="📊",
     hero_title="📊 Project Info",
     hero_subtitle="รายละเอียดของข้อมูล โมเดล และสถาปัตยกรรมที่ใช้ในโปรเจกต์",
