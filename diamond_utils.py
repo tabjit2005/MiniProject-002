@@ -84,8 +84,54 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 }
 
 section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0B1330 0%, #0E1D3D 100%);
     border-right: 1px solid rgba(56, 189, 248, 0.15);
 }
+
+[data-testid="stSidebarNav"] {
+    padding-top: 6px;
+}
+[data-testid="stSidebarNav"]::before {
+    content: "MINIPROJECT";
+    display: block;
+    margin: 14px 16px 12px 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #7DD3FC 0%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+[data-testid="stSidebarNav"] a {
+    margin: 2px 10px;
+    padding: 10px 14px !important;
+    border-radius: 10px;
+    color: #B9C7DD !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all .2s ease;
+}
+[data-testid="stSidebarNav"] a:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: #EAF2FB !important;
+}
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+    background: linear-gradient(90deg, rgba(56,189,248,0.15), rgba(212,175,55,0.08));
+    color: #7DD3FC !important;
+    box-shadow: inset 3px 0 0 #38BDF8;
+}
+
+/* เปลี่ยนข้อความเมนู sidebar เป็นภาษาไทย */
+[data-testid="stSidebarNav"] li:nth-child(1) a * { font-size: 0 !important; }
+[data-testid="stSidebarNav"] li:nth-child(1) a::after { content: "💎 หน้าหลัก"; font-size: 1rem !important; }
+[data-testid="stSidebarNav"] li:nth-child(2) a * { font-size: 0 !important; }
+[data-testid="stSidebarNav"] li:nth-child(2) a::after { content: "📊 รายละเอียดโปรเจกต์"; font-size: 1rem !important; }
+[data-testid="stSidebarNav"] li:nth-child(3) a * { font-size: 0 !important; }
+[data-testid="stSidebarNav"] li:nth-child(3) a::after { content: "🧑‍💻 ผู้พัฒนา"; font-size: 1rem !important; }
 </style>
 """
 
